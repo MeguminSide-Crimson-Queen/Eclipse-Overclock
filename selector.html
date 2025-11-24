@@ -61,10 +61,29 @@
       opacity: 0;
     }
 
-    .dialog {
-      margin-top: 30px;
+    .dialog-container {
+      position: relative;
+      margin-top: 40px;
+      width: 400px;
+      height: 100px;
+    }
+
+    .dialog-background {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .dialog-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       font-size: 24px;
       text-align: center;
+      color: white;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -79,7 +98,11 @@
       <div class="overlay"></div>
     </div>
   </div>
-  <div class="dialog" id="dialogText">Selecciona servidor</div>
+
+  <div class="dialog-container">
+    <img src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/exacto.png" alt="Decoración" class="dialog-background" />
+    <div class="dialog-text" id="dialogText">Selecciona servidor</div>
+  </div>
 
   <script>
     // Puedes cambiar el texto del cuadro de diálogo aquí
