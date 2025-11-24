@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selector</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      background-color: #111;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .card:hover .overlay {
+      opacity: 0;
+    }
+
+    .dialog {
+      margin-top: 30px;
+      font-size: 24px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <img src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/a1.png" alt="Personaje 1" />
+      <div class="overlay"></div>
+    </div>
+    <div class="card">
+      <img src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/a2.png" alt="Personaje 2" />
+      <div class="overlay"></div>
+    </div>
+  </div>
+  <div class="dialog" id="dialogText">Selecciona servidor</div>
+
+  <script>
+    // Puedes cambiar el texto del cuadro de diálogo aquí
+    document.getElementById("dialogText").textContent = "Selecciona servidor";
+  </script>
+</body>
+</html>
