@@ -130,6 +130,32 @@
       white-space: nowrap;
       pointer-events: none;
     }
+
+    /* Pantalla de carga */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #loading-screen .gif-wrapper img {
+      width: 150px;
+      height: auto;
+    }
+
+    #loading-screen p {
+      margin-top: 20px;
+      font-size: 24px;
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -141,18 +167,18 @@
   </a>
 
   <div class="container">
-    <a href="catalogo.html" class="card-link">
+    <div class="card-link" data-target="catalogo.html">
       <div class="card">
         <img src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/a1.png" alt="Personaje 1" />
         <div class="overlay"></div>
       </div>
-    </a>
-    <a href="catalogo.html" class="card-link">
+    </div>
+    <div class="card-link" data-target="catalogo.html">
       <div class="card">
         <img src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/a2.png" alt="Personaje 2" />
         <div class="overlay"></div>
       </div>
-    </a>
+    </div>
   </div>
 
   <div class="dialog-container">
@@ -160,10 +186,34 @@
     <div class="dialog-text" id="dialogText">Selecciona servidor</div>
   </div>
 
+  <!-- Pantalla de carga -->
+  <div id="loading-screen">
+    <div class="gif-wrapper">
+      <img src="https://i.pinimg.com/originals/04/29/89/04298998c4006e5847cf9ef157665b43.gif" alt="Cargando..." />
+    </div>
+    <p>Cargando Servicio...</p>
+  </div>
+
   <script>
     // Puedes cambiar los textos decorativos aquí
     document.getElementById("dialogText").textContent = "Selecciona servidor";
     document.getElementById("volverText").textContent = "Volver";
+
+    // Lógica para mostrar pantalla de carga antes de redirigir
+    document.querySelectorAll(".card-link").forEach(card => {
+      card.addEventListener("click", function(e) {
+        e.preventDefault(); // Evita redirección inmediata
+        const target = this.getAttribute("data-target");
+
+        // Mostrar pantalla de carga
+        document.getElementById("loading-screen").style.display = "flex";
+
+        // Redirigir después de 2 segundos
+        setTimeout(() => {
+          window.location.href = target;
+        }, 2000);
+      });
+    });
   </script>
 </body>
 </html>
