@@ -62,12 +62,12 @@
 <body>
   <header>
     <h1 class="catalogo-titulo">Más Nuevo</h1>
-    <a href="index.html" class="volver-link" id="volverLink">
-      <div class="volver-container">
+    <div class="volver-container">
+      <a href="index.html" class="volver-link" id="volverLink">
         <img src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/exacto.png" alt="Decoración Volver" class="volver-background" />
         <div class="volver-text" id="volverText">Volver al inicio</div>
-      </div>
-    </a>
+      </a>
+    </div>
   </header>
 
   <main class="catalogo-grid">
@@ -149,10 +149,7 @@
   </main>
 
   <script>
-    // Texto editable del botón decorativo
     document.getElementById("volverText").textContent = "Volver al inicio";
-
-    // Ruta editable del botón decorativo
     document.getElementById("volverLink").setAttribute("href", "index.html");
   </script>
 </body>
