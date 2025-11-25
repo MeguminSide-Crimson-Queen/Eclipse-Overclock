@@ -19,18 +19,18 @@
       margin: 0;
     }
 
-    .volver-container {
+    .decorativo-container {
       position: relative;
       width: 220px;
       height: 80px;
       transition: transform 0.3s ease;
     }
 
-    .volver-container:hover {
+    .decorativo-container:hover {
       transform: translateY(-10px);
     }
 
-    .volver-link {
+    .decorativo-link {
       display: block;
       width: 100%;
       height: 100%;
@@ -39,14 +39,14 @@
       color: white;
     }
 
-    .volver-background {
+    .decorativo-background {
       width: 100%;
       height: 100%;
       object-fit: contain;
       display: block;
     }
 
-    .volver-text {
+    .decorativo-text {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -56,16 +56,91 @@
       pointer-events: none;
       color: white;
     }
+
+    /* Menú hamburguesa */
+    .dropdown {
+      position: absolute;
+      top: 100px;
+      left: 20px;
+      z-index: 1000;
+    }
+
+    .menu-icon {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+    }
+
+    .dropdown-content {
+      display: none;
+      flex-direction: column;
+      background-color: #111;
+      border: 1px solid #444;
+      padding: 10px;
+    }
+
+    .dropdown-content a {
+      color: white;
+      text-decoration: none;
+      margin: 5px 0;
+    }
+
+    .menu-sep {
+      border: none;
+      border-top: 1px solid #555;
+      margin: 8px 0;
+    }
+
+    .dropdown.show .dropdown-content {
+      display: flex;
+    }
   </style>
 </head>
 
 <body>
   <header>
+    <!-- Botón decorativo con menú hamburguesa a la izquierda -->
+    <div class="decorativo-container">
+      <div class="decorativo-link">
+        <img src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/exacto.png" alt="Decoración Menú" class="decorativo-background" />
+        <div class="decorativo-text">Menú</div>
+      </div>
+      <nav class="dropdown" aria-label="Navegación principal">
+        <button class="menu-icon" id="menu-btn" aria-expanded="false" aria-controls="menu-content" aria-label="Abrir menú">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <div class="dropdown-content" id="menu-content" role="menu">
+          <a href="indie.html" role="menuitem">Inicio</a>
+          <a href="indie.html" role="menuitem">Catálogo</a>
+          <a href="indie.html" role="menuitem">Buscar</a>
+          <hr class="menu-sep">
+          <a href="catalogo.html" role="menuitem">Pedir un juego</a>
+          <a href="noticias.html" role="menuitem">Noticias</a>
+        </div>
+      </nav>
+    </div>
+
     <h1 class="catalogo-titulo">Más Nuevo</h1>
-    <div class="volver-container">
-      <a href="index.html" class="volver-link" id="volverLink">
-        <img src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/exacto.png" alt="Decoración Volver" class="volver-background" />
-        <div class="volver-text" id="volverText">Volver al inicio</div>
+
+    <!-- Botón decorativo de volver al inicio a la derecha -->
+    <div class="decorativo-container">
+      <a href="index.html" class="decorativo-link" id="volverLink">
+        <img src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/exacto.png" alt="Decoración Volver" class="decorativo-background" />
+        <div class="decorativo-text" id="volverText">Volver al inicio</div>
       </a>
     </div>
   </header>
@@ -151,6 +226,11 @@
   <script>
     document.getElementById("volverText").textContent = "Volver al inicio";
     document.getElementById("volverLink").setAttribute("href", "index.html");
+
+    // Menú hamburguesa toggle
+    document.getElementById("menu-btn").addEventListener("click", function () {
+      document.querySelector(".dropdown").classList.toggle("show");
+    });
   </script>
 </body>
 </html>
