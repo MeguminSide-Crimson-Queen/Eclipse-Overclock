@@ -5,12 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Catálogo de Animes</title>
   <link rel="stylesheet" href="style-cata.css" />
+  <style>
+    /* Estilo para el botón decorativo de Inicio */
+    .inicio-container {
+      position: relative;
+      width: 200px;
+      height: 80px;
+      transition: transform 0.3s ease;
+      display: inline-block;
+      margin-left: 20px;
+    }
+
+    .inicio-container:hover {
+      transform: translateY(-10px);
+    }
+
+    .inicio-link {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      text-decoration: none;
+      color: white;
+    }
+
+    .inicio-background {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .inicio-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 22px;
+      white-space: nowrap;
+      pointer-events: none;
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
   <header>
     <h1 class="catalogo-titulo">Más Nuevo</h1>
-    <a href="index.html"><button>🏠 Inicio</button></a>
+    <!-- Botón decorativo de Inicio -->
+    <a href="index.html" class="inicio-link" id="inicioLink">
+      <div class="inicio-container">
+        <img src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/exacto.png" alt="Decoración Inicio" class="inicio-background" />
+        <div class="inicio-text" id="inicioText">Inicio</div>
+      </div>
+    </a>
   </header>
 
   <main class="catalogo-grid">
@@ -90,5 +138,13 @@
     </div>
 
   </main>
+
+  <script>
+    // Texto editable del botón Inicio
+    document.getElementById("inicioText").textContent = "Inicio";
+
+    // Ruta editable del botón Inicio
+    document.getElementById("inicioLink").setAttribute("href", "index.html");
+  </script>
 </body>
 </html>
