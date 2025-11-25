@@ -9,7 +9,7 @@
     /* Header layout */
     header {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between; /* izquierda: título, derecha: acciones */
       align-items: center;
       padding: 20px;
     }
@@ -17,35 +17,21 @@
     .catalogo-titulo {
       font-size: 32px;
       color: white;
-      margin: 0;
+      margin: 0; /* totalmente a la izquierda por el flex */
     }
 
-    /* Grupo izquierdo (☰ + imagen decorativa) */
-    .left-actions {
+    /* Grupo derecho: ☰ + Volver al inicio */
+    .right-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
-    }
-
-    .decorativo-container {
-      position: relative;
-      width: 220px;
-      height: 80px;
-      transition: transform 0.3s ease;
-    }
-
-    .decorativo-container:hover {
-      transform: translateY(-10px);
-    }
-
-    .decorativo-background {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
+      gap: 16px; /* ☰ a la izquierda del botón decorativo */
     }
 
     /* Botón hamburguesa ☰ */
+    .dropdown {
+      position: relative;
+    }
+
     .hamburger-btn {
       background: #000;
       border: 1px solid #555;
@@ -61,11 +47,6 @@
     .hamburger-btn:hover {
       transform: translateY(-2px);
       background: #111;
-    }
-
-    /* Dropdown */
-    .dropdown {
-      position: relative;
     }
 
     .dropdown-content {
@@ -103,7 +84,7 @@
       display: flex;
     }
 
-    /* Botón decorativo de “Volver al inicio” (derecha) */
+    /* Botón decorativo “Volver al inicio” */
     .volver-container {
       position: relative;
       width: 220px;
@@ -144,11 +125,7 @@
 
     /* Opcional: ajuste en móvil */
     @media (max-width: 600px) {
-      .decorativo-container,
-      .volver-container {
-        width: 180px;
-        height: 64px;
-      }
+      .volver-container { width: 180px; height: 64px; }
       .volver-text { font-size: 18px; }
       .hamburger-btn { font-size: 22px; padding: 8px 12px; }
     }
@@ -157,8 +134,11 @@
 
 <body>
   <header>
-    <!-- Izquierda: ☰ + imagen decorativa -->
-    <div class="left-actions">
+    <!-- Izquierda: título totalmente a la izquierda -->
+    <h1 class="catalogo-titulo">Más Nuevo</h1>
+
+    <!-- Derecha: ☰ a la izquierda y “Volver al inicio” a la derecha -->
+    <div class="right-actions">
       <div class="dropdown" aria-label="Navegación principal">
         <button
           class="hamburger-btn"
@@ -179,28 +159,16 @@
         </div>
       </div>
 
-      <div class="decorativo-container" aria-hidden="true">
-        <img
-          src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/exacto.png"
-          alt="Decoración izquierda"
-          class="decorativo-background"
-        />
+      <div class="volver-container">
+        <a href="index.html" class="volver-link" id="volverLink">
+          <img
+            src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/exacto.png"
+            alt="Decoración Volver"
+            class="volver-background"
+          />
+          <div class="volver-text" id="volverText">Volver al inicio</div>
+        </a>
       </div>
-    </div>
-
-    <!-- Centro: título -->
-    <h1 class="catalogo-titulo">Más Nuevo</h1>
-
-    <!-- Derecha: botón decorativo “Volver al inicio” -->
-    <div class="volver-container">
-      <a href="index.html" class="volver-link" id="volverLink">
-        <img
-          src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/exacto.png"
-          alt="Decoración Volver"
-          class="volver-background"
-        />
-        <div class="volver-text" id="volverText">Volver al inicio</div>
-      </a>
     </div>
   </header>
 
