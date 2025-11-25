@@ -6,14 +6,24 @@
   <title>Catálogo de Animes</title>
   <link rel="stylesheet" href="style-cata.css" />
   <style>
-    /* Estilo para el botón decorativo de Inicio */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .catalogo-titulo {
+      font-size: 32px;
+      color: white;
+      margin: 0;
+    }
+
     .inicio-container {
       position: relative;
       width: 200px;
       height: 80px;
       transition: transform 0.3s ease;
-      display: inline-block;
-      margin-left: 20px;
     }
 
     .inicio-container:hover {
@@ -51,8 +61,7 @@
 
 <body>
   <header>
-    <h1 class="catalogo-titulo">Más Nuevo</h1>
-    <!-- Botón decorativo de Inicio -->
+    <h1 class="catalogo-titulo">Catálogo de Animes — Más Nuevo</h1>
     <a href="index.html" class="inicio-link" id="inicioLink">
       <div class="inicio-container">
         <img src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/exacto.png" alt="Decoración Inicio" class="inicio-background" />
@@ -62,7 +71,6 @@
   </header>
 
   <main class="catalogo-grid">
-
     <div class="anime-card" onclick="location.href='catalogo/Normals/Bendy-and-Machine.html'">
       <div class="imagen-wrapper">
         <div class="etiqueta-superior derecha">2018</div>
@@ -136,14 +144,10 @@
       </div>
       <h3>Erased</h3>
     </div>
-
   </main>
 
   <script>
-    // Texto editable del botón Inicio
     document.getElementById("inicioText").textContent = "Inicio";
-
-    // Ruta editable del botón Inicio
     document.getElementById("inicioLink").setAttribute("href", "index.html");
   </script>
 </body>
