@@ -19,18 +19,18 @@
       margin: 0;
     }
 
-    .inicio-container {
+    .volver-container {
       position: relative;
-      width: 200px;
+      width: 220px;
       height: 80px;
       transition: transform 0.3s ease;
     }
 
-    .inicio-container:hover {
+    .volver-container:hover {
       transform: translateY(-10px);
     }
 
-    .inicio-link {
+    .volver-link {
       display: block;
       width: 100%;
       height: 100%;
@@ -39,19 +39,19 @@
       color: white;
     }
 
-    .inicio-background {
+    .volver-background {
       width: 100%;
       height: 100%;
       object-fit: contain;
       display: block;
     }
 
-    .inicio-text {
+    .volver-text {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 22px;
+      font-size: 20px;
       white-space: nowrap;
       pointer-events: none;
       color: white;
@@ -61,17 +61,18 @@
 
 <body>
   <header>
-    <h1 class="catalogo-titulo">Catálogo de Animes — Más Nuevo</h1>
-    <a href="index.html" class="inicio-link" id="inicioLink">
-      <div class="inicio-container">
-        <img src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/exacto.png" alt="Decoración Inicio" class="inicio-background" />
-        <div class="inicio-text" id="inicioText">Inicio</div>
+    <h1 class="catalogo-titulo">Más Nuevo</h1>
+    <a href="index.html" class="volver-link" id="volverLink">
+      <div class="volver-container">
+        <img src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/exacto.png" alt="Decoración Volver" class="volver-background" />
+        <div class="volver-text" id="volverText">Volver al inicio</div>
       </div>
     </a>
   </header>
 
   <main class="catalogo-grid">
-    <div class="anime-card" onclick="location.href='catalogo/Normals/Bendy-and-Machine.html'">
+
+<div class="anime-card" onclick="location.href='mangas/mieruko-chan/Tomo-1.html'">
       <div class="imagen-wrapper">
         <div class="etiqueta-superior derecha">2018</div>
         <img src="https://endermanga.wordpress.com/wp-content/uploads/2025/10/8-sin-titulo4_20241007213006.png" alt="Mieruko-chan" />
@@ -144,11 +145,15 @@
       </div>
       <h3>Erased</h3>
     </div>
+    
   </main>
 
   <script>
-    document.getElementById("inicioText").textContent = "Inicio";
-    document.getElementById("inicioLink").setAttribute("href", "index.html");
+    // Texto editable del botón decorativo
+    document.getElementById("volverText").textContent = "Volver al inicio";
+
+    // Ruta editable del botón decorativo
+    document.getElementById("volverLink").setAttribute("href", "index.html");
   </script>
 </body>
 </html>
