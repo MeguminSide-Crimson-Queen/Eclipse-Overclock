@@ -187,6 +187,16 @@
       }
     ];
 
+const Eclipse = [
+      {
+        alias: ["Bendy And The Ink Machine", "Bendy", "Bendy and"],
+        titulo: "Bendy and the Ink Machine",
+        ruta: "catalogo-Eclipse/Normals/Bendy-and-Machine.html",
+        tipo: "Juego Eclipse - Normals",
+        imagen: "https://omniverse07.wordpress.com/wp-content/uploads/2024/10/8-sin-titulo10.png"
+      }
+    ];
+    
     const peliculas = [
       {
         alias: ["your name", "kimi no na wa"],
@@ -199,7 +209,7 @@
 
     const todasLasClaves = {};
 
-    [...animes, ...series, ...peliculas].forEach(item => {
+    [...animes, ...Eclipse, ...series, ...peliculas].forEach(item => {
       item.alias.forEach(alias => {
         todasLasClaves[alias.toLowerCase()] = item;
       });
