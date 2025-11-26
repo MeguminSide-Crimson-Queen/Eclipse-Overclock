@@ -130,17 +130,12 @@
   }
 
   /* === EFECTO ELEVACIÓN por botón === */
-  .buy-btn:hover {
+  .buy-btn:hover,
+  .cart-btn:hover,
+  .wishlist-btn:hover,
+  .modal-content .btn:hover {
     transform: translateY(-6px);
     box-shadow: 0 8px 25px rgba(57,147,243,0.45);
-  }
-  .cart-btn:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 25px rgba(57,57,57,0.45);
-  }
-  .wishlist-btn:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 25px rgba(57,57,57,0.45);
   }
 
   /* === MODAL === */
@@ -227,45 +222,43 @@
 <div class="modal" id="downloadModal">
   <div class="modal-content">
     <h2>Selecciona una opción</h2>
-    <button class="btn" onclick="window.location.href='https://mega.io/'">Opción 1</button>
-    <button class="btn" onclick="window.location.href='https://mega.io/'">Opción 2</button>
-    <button class="btn" onclick="window.location.href='https://mega.io/'">Opción 3</button>
+    <button class="btn" onclick="window.location.href='https://mega.io/'">Mega - 1</button>
+    <button class="btn" onclick="window.location.href='https://mega.io/'">Mediafire - 1</button>
     <button class="btn close-btn" id="closeModal">Cerrar</button>
   </div>
 </div>
 
 <script>
 const juego = {
-  titulo: "Bendy and the Ink Machine",
-  rating: "★ 4.6 | Muy recomendable",
-  descripcion: "Bendy and the Ink Machine® es el primer juego de terror, rompecabezas y acción en primera persona...",
-  generos: ["Exploración", "Primera persona", "Terror"],
+  titulo: "NanoApostle",
+  rating: "★ 4.8 | Excelente / Imprescindible",
+  descripcion: "NanoApostle es un oscuro juego de ciencia ficción donde te enfrentarás a jefes en combates en los que deberás reaccionar y aprovechar sus puntos de destrucción. Usa los nanobots de Anita para luchar contra ciberexperimentos y huir de unas instalaciones supersecretas.",
+  generos: [" Acción", "Indie"],
   funciones: ["Compatible con mando", "Guardado en la nube", "Un solo jugador"],
   precio: "Mediafire - Gofile",
-  logo: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/622650/header.jpg",
+  logo: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2400640/header.jpg?t=1754994954",
   info: `
-    <strong>Desarrolladora:</strong> Joey Drew Studios<br>
-    <strong>Editora:</strong> Joey Drew Studios<br>
-    <strong>Fecha de lanzamiento:</strong> 09/09/25<br>
-    <strong>Lanzamiento inicial:</strong> 09/02/17<br>
+    <strong>Desarrolladora:</strong> 18Light Game Ltd.<br>
+    <strong>Editora:</strong> PQube<br>
+    <strong>Fecha de lanzamiento:</strong> 12/09/24<br>
     <strong>Plataforma:</strong> Windows
   `,
   requisitos: {
     minimos: {
       "Versión del sistema operativo": "Windows 10",
       "CPU": "64 bits",
-      "Memoria": "8 GB",
-      "GPU": "Tarjeta gráfica dedicada (4 GB)",
-      "DirectX": "12",
-      "Almacenamiento": "2 GB"
+      "Memoria": "4 GB",
+      "GPU": "Tarjeta gráfica dedicada (2 GB)",
+      "DirectX": "11",
+      "Almacenamiento": "5 GB"
     },
     recomendados: {
-      "Versión del sistema operativo": "Windows 11",
+      "Versión del sistema operativo": "Windows 10 o superior",
       "CPU": "64 bits",
       "Memoria": "8 GB",
       "GPU": "Tarjeta gráfica dedicada (4 GB)",
       "DirectX": "12",
-      "Almacenamiento": "2 GB"
+      "Almacenamiento": "5 GB"
     }
   },
   imagenes: [
@@ -316,28 +309,58 @@ let index = 0;
 
 function crearMedia(url) {
   const lower = url.toLowerCase();
+
+  // 1️⃣ Detectar imágenes
   if (lower.match(/\.(jpg|jpeg|png|webp)$/)) {
     const img = document.createElement("img");
     img.src = url;
     img.alt = "imagen del juego";
-    img.onerror = () => img.src = "https://via.placeholder.com/800x450?text=Imagen+no+disponible";
+    img.onerror = () =>
+      (img.src = "https://via.placeholder.com/800x450?text=Imagen+no+disponible");
     return img;
-  } else if (lower.match(/\.(mp4|webm|ogg)$/)) {
+  }
+
+  // 2️⃣ Detectar videos directos (.mp4 .webm .ogg)
+  if (lower.match(/\.(mp4|webm|ogg)$/)) {
     const vid = document.createElement("video");
     vid.src = url;
     vid.controls = true;
     vid.preload = "metadata";
     vid.style.background = "#000";
     return vid;
-  } else {
+  }
+
+  // 3️⃣ Detectar plataformas que SOLO funcionan con <iframe>
+  const iframePlatforms = [
+    "youtube.com",
+    "youtu.be",
+    "vimeo.com",
+    "dailymotion.com",
+    "tiktok.com",
+    "twitch.tv"
+  ];
+
+  const requiereIframe = iframePlatforms.some(p => url.includes(p));
+
+  if (requiereIframe) {
     const iframe = document.createElement("iframe");
     iframe.src = url;
-    iframe.allow = "autoplay; fullscreen";
+    iframe.allow =
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
     iframe.frameBorder = "0";
     iframe.loading = "lazy";
     iframe.style.background = "#000";
     return iframe;
   }
+
+  // 4️⃣ TODO lo desconocido → iframe como fallback seguro
+  const iframe = document.createElement("iframe");
+  iframe.src = url;
+  iframe.allow = "autoplay; fullscreen";
+  iframe.frameBorder = "0";
+  iframe.loading = "lazy";
+  iframe.style.background = "#000";
+  return iframe;
 }
 
 // Render de slides + miniaturas
@@ -383,9 +406,17 @@ document.getElementById("btn-buy").onclick = () => {
 document.getElementById("btn-cart").onclick = () => location.href = "saga.html";
 document.getElementById("btn-wish").onclick = () => location.href = "index.html";
 
-// Cerrar modal
+// Cerrar modal con botón
 document.getElementById("closeModal").onclick = () => {
   document.getElementById("downloadModal").style.display = "none";
+};
+
+// Cerrar modal al hacer clic fuera del contenido
+window.onclick = (event) => {
+  const modal = document.getElementById("downloadModal");
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
 };
 </script>
 </body>
