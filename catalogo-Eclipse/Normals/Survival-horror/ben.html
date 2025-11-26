@@ -363,19 +363,28 @@ function crearMedia(url) {
   return iframe;
 }
 
-// Render de slides + miniaturas
+// Render de slides + miniaturas (con soporte para thumbnails personalizados)
 juego.imagenes.forEach((item, i) => {
   const el = crearMedia(item.page);
   slides.appendChild(el);
 
   const thumb = document.createElement("img");
-  if (item.page.match(/\.(jpg|jpeg|png|webp)$/)) {
+
+  // Si el usuario especifica un thumbnail → usarlo
+  if (item.thumbnail) {
+    thumb.src = item.thumbnail;
+  }
+  // Si es una imagen → usar la misma imagen
+  else if (item.page.match(/\.(jpg|jpeg|png|webp)$/)) {
     thumb.src = item.page;
-  } else {
+  }
+  // Si es un video o iframe sin thumbnail → ícono por defecto
+  else {
     thumb.src = "https://img.icons8.com/ios-filled/50/ffffff/play-button-circled.png";
     thumb.style.background = "#000";
     thumb.style.objectFit = "contain";
   }
+
   thumb.addEventListener("click", () => showSlide(i));
   thumbnails.appendChild(thumb);
 });
