@@ -275,6 +275,7 @@ const juego = {
   }
 ]
 
+
 // Render de texto e info
 document.getElementById('titulo').textContent = juego.titulo;
 document.getElementById('rating').textContent = juego.rating;
@@ -316,43 +317,82 @@ let index = 0;
 
 function crearMedia(url) {
   const lower = url.toLowerCase();
+
+  // 1️⃣ Detectar imágenes
   if (lower.match(/\.(jpg|jpeg|png|webp)$/)) {
     const img = document.createElement("img");
     img.src = url;
     img.alt = "imagen del juego";
-    img.onerror = () => img.src = "https://via.placeholder.com/800x450?text=Imagen+no+disponible";
+    img.onerror = () =>
+      (img.src = "https://via.placeholder.com/800x450?text=Imagen+no+disponible");
     return img;
-  } else if (lower.match(/\.(mp4|webm|ogg)$/)) {
+  }
+
+  // 2️⃣ Detectar videos directos (.mp4 .webm .ogg)
+  if (lower.match(/\.(mp4|webm|ogg)$/)) {
     const vid = document.createElement("video");
     vid.src = url;
     vid.controls = true;
     vid.preload = "metadata";
     vid.style.background = "#000";
     return vid;
-  } else {
+  }
+
+  // 3️⃣ Detectar plataformas que SOLO funcionan con <iframe>
+  const iframePlatforms = [
+    "youtube.com",
+    "youtu.be",
+    "vimeo.com",
+    "dailymotion.com",
+    "tiktok.com",
+    "twitch.tv"
+  ];
+
+  const requiereIframe = iframePlatforms.some(p => url.includes(p));
+
+  if (requiereIframe) {
     const iframe = document.createElement("iframe");
     iframe.src = url;
-    iframe.allow = "autoplay; fullscreen";
+    iframe.allow =
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
     iframe.frameBorder = "0";
     iframe.loading = "lazy";
     iframe.style.background = "#000";
     return iframe;
   }
+
+  // 4️⃣ TODO lo desconocido → iframe como fallback seguro
+  const iframe = document.createElement("iframe");
+  iframe.src = url;
+  iframe.allow = "autoplay; fullscreen";
+  iframe.frameBorder = "0";
+  iframe.loading = "lazy";
+  iframe.style.background = "#000";
+  return iframe;
 }
 
-// Render de slides + miniaturas
+// Render de slides + miniaturas (con soporte para thumbnails personalizados)
 juego.imagenes.forEach((item, i) => {
   const el = crearMedia(item.page);
   slides.appendChild(el);
 
   const thumb = document.createElement("img");
-  if (item.page.match(/\.(jpg|jpeg|png|webp)$/)) {
+
+  // Si el usuario especifica un thumbnail → usarlo
+  if (item.thumbnail) {
+    thumb.src = item.thumbnail;
+  }
+  // Si es una imagen → usar la misma imagen
+  else if (item.page.match(/\.(jpg|jpeg|png|webp)$/)) {
     thumb.src = item.page;
-  } else {
+  }
+  // Si es un video o iframe sin thumbnail → ícono por defecto
+  else {
     thumb.src = "https://img.icons8.com/ios-filled/50/ffffff/play-button-circled.png";
     thumb.style.background = "#000";
     thumb.style.objectFit = "contain";
   }
+
   thumb.addEventListener("click", () => showSlide(i));
   thumbnails.appendChild(thumb);
 });
