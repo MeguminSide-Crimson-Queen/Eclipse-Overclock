@@ -155,11 +155,12 @@
       margin-top: 20px;
       font-size: 24px;
       color: white;
-      font-weight: bold; /* Texto en negrita */
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
+
   <a href="index.html" class="volver-link">
     <div class="volver-container">
       <img src="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/exacto.png" alt="Decoración Volver" class="volver-background" />
@@ -196,25 +197,26 @@
   </div>
 
   <script>
-    // Puedes cambiar los textos decorativos aquí
     document.getElementById("dialogText").textContent = "Selecciona servidor";
     document.getElementById("volverText").textContent = "Volver";
 
-    // Lógica para mostrar pantalla de carga antes de redirigir
     document.querySelectorAll(".card-link").forEach(card => {
       card.addEventListener("click", function(e) {
-        e.preventDefault(); // Evita redirección inmediata
+        e.preventDefault();
         const target = this.getAttribute("data-target");
 
-        // Mostrar pantalla de carga
         document.getElementById("loading-screen").style.display = "flex";
 
-        // Redirigir después de 2 segundos
         setTimeout(() => {
           window.location.href = target;
         }, 2000);
       });
     });
   </script>
+
+  <!-- 🔥 SISTEMA ANTI-CACHÉ -->
+  <script src="version.js?v"></script>
+  <script src="force-update.js?v"></script>
+
 </body>
 </html>
