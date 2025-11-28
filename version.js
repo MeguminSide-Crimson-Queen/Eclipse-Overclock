@@ -1,2 +1,2 @@
 // Cambiá este número SOLAMENTE cuando hagas cambios nuevos
-window.APP_VERSION = "1.0.0";
+window.APP_VERSION = "1.0.1";
