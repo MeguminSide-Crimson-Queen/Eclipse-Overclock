@@ -369,3 +369,130 @@ header a button:hover {
 a {
   text-decoration: none;
 }
+
+/* ============================
+   🔥 RESPONSIVE PARA TABLETS
+   ============================ */
+@media (max-width: 900px) {
+
+  header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .hero {
+    height: 60vh;
+    background-position: top;
+  }
+
+  .hero-text h2 {
+    font-size: 1.9em;
+  }
+
+  .hero-text p {
+    font-size: 1em;
+  }
+
+  .catalogo-grid {
+    padding: 20px;
+    gap: 25px;
+  }
+
+  .anime-card {
+    padding: 15px;
+  }
+
+  .discord-call {
+    padding: 30px 20px;
+  }
+
+  .discord-text.centered-block {
+    font-size: 1em;
+  }
+
+  .discord-img {
+    max-width: 260px;
+  }
+}
+
+/* ============================
+   📱 RESPONSIVE PARA CELULARES
+   ============================ */
+@media (max-width: 480px) {
+
+  header {
+    padding: 10px 15px;
+  }
+
+  .logo-text-header {
+    font-size: 1.4em;
+  }
+
+  button {
+    font-size: 1em;
+    padding: 8px 13px;
+  }
+
+  .hero {
+    height: 45vh;
+    align-items: flex-end;
+  }
+
+  .hero-overlay {
+    padding: 20px;
+  }
+
+  .hero-text h2 {
+    font-size: 1.6em;
+  }
+
+  .hero-text p {
+    font-size: 0.9em;
+  }
+
+  .catalogo-titulo {
+    font-size: 1.8em;
+    margin: 20px 0;
+  }
+
+  .catalogo-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 15px;
+  }
+
+  .anime-card {
+    padding: 15px;
+  }
+
+  .anime-card h3 {
+    font-size: 1.2em;
+  }
+
+  .discord-call h2 {
+    font-size: 1.6em;
+  }
+
+  .discord-btn {
+    font-size: 1.1em;
+    padding: 12px 30px;
+  }
+
+  .discord-info.balanced-layout {
+    padding: 40px 20px;
+  }
+
+  .discord-heading.center {
+    font-size: 2em;
+  }
+
+  .discord-text.centered-block {
+    font-size: 0.95em;
+    line-height: 1.6;
+  }
+
+  .discord-img {
+    max-width: 220px;
+  }
+}
