@@ -238,7 +238,7 @@ li { margin-bottom: 8px; }
     <!-- Botones editados -->
     <button class="btn buy-btn" id="btn-buy">Descarga Now!</button>
     <button class="btn cart-btn" id="btn-cart">Ver saga completa</button>
-    <button class="btn wishlist-btn" id="btn-wish">A la lista de deseos</button>
+    <button class="btn wishlist-btn" id="btn-wish">Cerrar</button>
 
     <div class="footer-info" id="info"></div>
   </aside>
@@ -465,7 +465,7 @@ document.getElementById("btn-buy").onclick = () => {
   document.getElementById("downloadModal").style.display = "flex";
 };
 document.getElementById("btn-cart").onclick = () => location.href = "saga.html";
-document.getElementById("btn-wish").onclick = () => location.href = "index.html";
+document.getElementById("btn-wish").onclick = () => location.href = "../../index.html";
 
 // Cerrar modal con botón
 document.getElementById("closeModal").onclick = () => {
