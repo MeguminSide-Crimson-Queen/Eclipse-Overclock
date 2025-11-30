@@ -5,177 +5,191 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bendy and the Ink Machine</title>
 <style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
-    color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-  }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
 
-  .container {
-    display: flex;
-    justify-content: space-between;
-    padding: 40px;
-    gap: 40px;
-  }
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  gap: 40px;
+}
 
-  .main-content { flex: 2.5; }
-  .sidebar {
-    flex: 1;
-    background: #1e1e1e;
-    padding: 20px;
-    border-radius: 10px;
-    height: fit-content;
-  }
+.main-content { flex: 2.5; }
+.sidebar {
+  flex: 1;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  height: fit-content;
+}
 
-  h1 { font-size: 2rem; font-weight: 700; margin-bottom: 5px; }
-  .rating { color: #fff; margin-bottom: 15px; }
+h1 { font-size: 2rem; font-weight: 700; margin-bottom: 5px; }
+.rating { color: #fff; margin-bottom: 15px; }
 
-  /* ===== SLIDER ===== */
-  .slider {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    width: 100%;
-    background: #000;
-    aspect-ratio: 16 / 9;
-  }
+/* ===== SLIDER ===== */
+.slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
+  background: #000;
+  aspect-ratio: 16 / 9;
+}
 
-  /* ==== FIX DEL SLIDER ==== */
-  .slides {
-    display: flex;
-    transition: transform 0.6s ease;
-    height: 100%;
-    width: 100%;           /* ← evita que crezca infinito */
-  }
-  .slides > * {
-    min-width: 100%;       /* ← cada slide ocupa 100% */
-    height: 100%;
-  }
+/* ==== FIX DEL SLIDER FINAL ==== */
+.slides {
+  display: flex;
+  transition: transform 0.6s ease;
+  height: 100%;
+  width: max-content;     /* ✔ El contenedor crece según la cantidad de slides */
+}
 
-  .slides iframe, .slides img, .slides video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 10px;
-    flex-shrink: 0;
-    background: #000;
-  }
+.slides > * {
+  min-width: 100%;        /* ✔ Cada slide ocupa exactamente el ancho del slider */
+  height: 100%;
+  flex-shrink: 0;         /* ✔ Previene el aplastamiento y los desbordes */
+}
 
-  .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 30px;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 50%;
-    z-index: 5;
-  }
-  .arrow.left { left: 10px; }
-  .arrow.right { right: 10px; }
+.slides iframe,
+.slides img,
+.slides video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #000;
+}
 
-  /* ===== MINIATURAS ===== */
-  .thumbnails {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-    overflow-x: auto;
-    padding-bottom: 5px;
-  }
-  .thumbnails img {
-    width: 110px;
-    height: 70px;
-    border-radius: 6px;
-    object-fit: cover;
-    cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 0.3s, border 0.3s;
-    background: #000;
-  }
-  .thumbnails img.active {
-    opacity: 1;
-    border: 2px solid #ff0055;
-  }
+/* ===== FLECHAS ===== */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 50%;
+  z-index: 5;
+}
+.arrow.left { left: 10px; }
+.arrow.right { right: 10px; }
 
-  section { margin-top: 30px; }
-  h2 {
-    font-size: 1.3rem;
-    border-bottom: 2px solid #333;
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-  }
+/* ===== MINIATURAS ===== */
+.thumbnails {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+.thumbnails img {
+  width: 110px;
+  height: 70px;
+  border-radius: 6px;
+  object-fit: cover;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s, border 0.3s;
+  background: #000;
+}
+.thumbnails img.active {
+  opacity: 1;
+  border: 2px solid #ff0055;
+}
 
-  ul { list-style: none; padding-left: 0; }
-  li { margin-bottom: 8px; }
+section { margin-top: 30px; }
+h2 {
+  font-size: 1.3rem;
+  border-bottom: 2px solid #333;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
 
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tag { background: #333; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; }
+ul { list-style: none; padding-left: 0; }
+li { margin-bottom: 8px; }
 
-  .sidebar img { width: 100%; margin-bottom: 10px; border-radius: 8px; }
-  .price { font-size: 1.2rem; color: #fff; margin: 10px 0; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { background: #333; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; }
 
-  .btn {
-    width: 100%; padding: 12px; border: none; border-radius: 6px;
-    cursor: pointer; font-weight: bold; font-size: 1rem; margin-bottom: 10px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-  .buy-btn { background: #0078ff; color: white; }
-  .cart-btn, .wishlist-btn { background: #2c2c2c; color: #fff; }
+.sidebar img { width: 100%; margin-bottom: 10px; border-radius: 8px; }
+.price { font-size: 1.2rem; color: #fff; margin: 10px 0; }
 
-  .footer-info {
-    font-size: 0.85rem; color: #bbb; margin-top: 20px;
-    border-top: 1px solid #333; padding-top: 10px;
-  }
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.buy-btn { background: #0078ff; color: white; }
+.cart-btn, .wishlist-btn { background: #2c2c2c; color: #fff; }
 
-  @media (max-width: 900px) {
-    .container { flex-direction: column; padding: 20px; }
-    .slider { aspect-ratio: auto; height: auto; }
-  }
+.footer-info {
+  font-size: 0.85rem;
+  color: #bbb;
+  margin-top: 20px;
+  border-top: 1px solid #333;
+  padding-top: 10px;
+}
 
-  /* === EFECTO ELEVACIÓN por botón === */
-  .buy-btn:hover,
-  .cart-btn:hover,
-  .wishlist-btn:hover,
-  .modal-content .btn:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 25px rgba(57,147,243,0.45);
-  }
+@media (max-width: 900px) {
+  .container { flex-direction: column; padding: 20px; }
+  .slider { aspect-ratio: auto; height: auto; }
+}
 
-  /* === MODAL === */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 100;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.7);
-    justify-content: center;
-    align-items: center;
-  }
-  .modal-content {
-    background: #1e1e1e;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-  }
-  .modal-content h2 {
-    margin-bottom: 15px;
-  }
-  .modal-content .btn {
-    margin: 5px 0;
-    width: auto;
-    min-width: 200px;
-  }
-  .close-btn {
-    background: #ff0055;
-    color: #fff;
-    margin-top: 15px;
-  }
+/* === EFECTO ELEVACIÓN === */
+.buy-btn:hover,
+.cart-btn:hover,
+.wishlist-btn:hover,
+.modal-content .btn:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(57,147,243,0.45);
+}
+
+/* === MODAL === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+.modal-content h2 {
+  margin-bottom: 15px;
+}
+.modal-content .btn {
+  margin: 5px 0;
+  width: auto;
+  min-width: 200px;
+}
+.close-btn {
+  background: #ff0055;
+  color: #fff;
+  margin-top: 15px;
+}
+
 </style>
 </head>
 <body>
@@ -280,6 +294,42 @@ const juego = {
   },
   { 
     page: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/622650/06e9f7d9f6acb550afc423b2cde48160633db805/ss_06e9f7d9f6acb550afc423b2cde48160633db805.1920x1080.jpg"
+  },
+      { 
+    page: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2400640/ss_c08f260443aed68a0b19c36d1780e493a4f61708.1920x1080.jpg?t=1754994954"
+  },
+  { 
+    page: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2400640/ss_fff51f4c930a0d9ec984f7355a61ea9f6a88d9ff.1920x1080.jpg?t=1754994954"
+  },
+  { 
+    page: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2400640/ss_14001640536da6a2b363accaa14c36fd8f543358.1920x1080.jpg?t=1754994954"
+  },
+  { 
+    page: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2400640/ss_507b63496a97f0b29a09300c6286e47934e89c93.1920x1080.jpg?t=1754994954"
+  },
+  { 
+    page: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2400640/ss_274b5fc9b672b82465bea8c0fa0411813ae1f4de.1920x1080.jpg?t=1754994954"
+  },
+  { 
+    page: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2400640/ss_92418c051d7e5dd9ca92a2022b614ddcad0549cc.1920x1080.jpg?t=1754994954"
+  },
+  { 
+    page: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2400640/ss_9a7761d86a6ce2cd8fe48a3a2f0610778b04c588.1920x1080.jpg?t=1754994954"
+  }, 
+    { 
+    page: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2400640/ss_169edc8ba303b517a8c71b4928aa67c578594f74.1920x1080.jpg?t=1754994954"
+  },
+    { 
+    page: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2400640/ss_68be1a7128c991c940802325ff65a03002e678da.1920x1080.jpg?t=1754994954"
+  },
+    { 
+    page: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2400640/ss_c075f9d93c4bbea5a091507e09265f84e0d24df2.1920x1080.jpg?t=1754994954"
+  },
+    { 
+    page: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2400640/ss_c26720a715ffa18f42bb518fb651ccae8ab95a2b.1920x1080.jpg?t=1754994954"
+  },
+    { 
+    page: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2400640/ss_c85ca9086e4e7ae87e1b1612f12e2ea7c8bacf58.1920x1080.jpg?t=1754994954"
   }
   
 ]
