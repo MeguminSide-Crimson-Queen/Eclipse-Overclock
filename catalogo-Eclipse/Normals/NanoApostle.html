@@ -362,7 +362,7 @@ function crearMedia(url) {
   const lower = url.toLowerCase();
 
   // 1️⃣ Detectar imágenes
-  if (lower.match(/\.(jpg|jpeg|png|webp)$/)) {
+  if (lower.match(/\.(jpg|jpeg|png|webp)(\?.*)?$/)) {
     const img = document.createElement("img");
     img.src = url;
     img.alt = "imagen del juego";
