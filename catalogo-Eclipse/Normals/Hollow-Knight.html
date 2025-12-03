@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bendy and the Ink Machine</title>
+<title>Hollow Knight</title>
+
+  <!-- Favicon desde WordPress -->
+<link rel="icon" type="image/png" href="https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/eclipse-overclock-1.png">
+
 <style>
 /* box-sizing global: evita sorpresas con paddings/anchos */
 *, *::before, *::after { box-sizing: border-box; }
@@ -256,36 +260,36 @@ li { margin-bottom: 8px; }
 
 <script>
 const juego = {
-  titulo: "NanoApostle",
-  rating: "★ 4.8 | Excelente / Imprescindible",
-  descripcion: "NanoApostle es un oscuro juego de ciencia ficción donde te enfrentarás a jefes en combates en los que deberás reaccionar y aprovechar sus puntos de destrucción. Usa los nanobots de Anita para luchar contra ciberexperimentos y huir de unas instalaciones supersecretas.",
-  generos: [" Acción", "Indie"],
+  titulo: "Hollow Knight",
+  rating: "★ 4.9 | Obra maestra/ Imprescindible",
+  descripcion: "¡Forja tu propio camino en Hollow Knight! Una aventura épica a través de un vasto reino de insectos y héroes que se encuentra en ruinas. Explora cavernas tortuosas, combate contra criaturas corrompidas y entabla amistad con extraños insectos, todo en un estilo clásico en 2D dibujado a mano.",
+  generos: [" Acción","aventura", "Indie"],
   funciones: ["Compatible con mando", "Guardado en la nube", "Un solo jugador"],
   precio: "Mediafire - Gofile",
-  logo: "https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/11/base.png",
+  logo: "https://eclipseoverclock.wordpress.com/wp-content/uploads/2025/12/header.jpg",
   info: `
-    <strong>Desarrolladora:</strong> 18Light Game Ltd.<br>
-    <strong>Editora:</strong> PQube<br>
-    <strong>Fecha de lanzamiento:</strong> 12/09/24<br>
+    <strong>Desarrolladora:</strong> Team Cherry<br>
+    <strong>Editora:</strong> Team Cherry<br>
+    <strong>Fecha de lanzamiento:</strong> 24/02/17<br>
     <strong>Plataforma:</strong> Windows<br>
     <strong>Sitio Extraido:</strong> Discord<br>
   `,
   requisitos: {
     minimos: {
-      "Versión del sistema operativo": "Windows 10",
-      "CPU": "64 bits",
+      "Versión del sistema operativo": "Windows 7",
+      "CPU": "Intel Core 2 Duo E5200",
       "Memoria": "4 GB",
-      "GPU": "Tarjeta gráfica dedicada (2 GB)",
-      "DirectX": "11",
-      "Almacenamiento": "5 GB"
+      "GPU": "GeForce 9800 GTX+ (1 GB VRAM)",
+      "DirectX": "10",
+      "Almacenamiento": "9 GB"
     },
     recomendados: {
-      "Versión del sistema operativo": "Windows 10 o superior",
-      "CPU": "64 bits",
+      "Versión del sistema operativo": "Windows 10  o superior",
+      "CPU": "Intel Core i5",
       "Memoria": "8 GB",
-      "GPU": "Tarjeta gráfica dedicada (4 GB)",
+      "GPU": "GeForce GTX 560",
       "DirectX": "12",
-      "Almacenamiento": "5 GB"
+      "Almacenamiento": "9 GB"
     }
   },
     imagenes: [
@@ -465,7 +469,7 @@ showSlide(0);
 document.getElementById("btn-buy").onclick = () => {
   document.getElementById("downloadModal").style.display = "flex";
 };
-document.getElementById("btn-cart").onclick = () => location.href = "saga.html";
+document.getElementById("btn-cart").onclick = () => location.href = "../saga.html";
 document.getElementById("btn-wish").onclick = () => location.href = "../../Eclipse/catalogo.html";
 
 // Cerrar modal con botón
