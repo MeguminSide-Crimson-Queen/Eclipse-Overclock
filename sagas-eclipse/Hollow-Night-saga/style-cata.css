@@ -1,16 +1,7 @@
-/* =======================================
-   VARIABLES GLOBALES
-======================================= */
-:root {
-  --color-principal: #3C4F65; /* ← cambia solo aquí */
-  --color-principal-dark: color-mix(in srgb, var(--color-principal) 80%, black);
-  --color-principal-shadow: color-mix(in srgb, var(--color-principal) 50%, transparent);
-}
-
 /* GENERAL */
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif';
+  font-family: 'Arial', sans-serif;
   background-color: #0b0b0b;
   color: #fff;
 }
@@ -27,12 +18,12 @@ header {
 .logo-text-header {
   font-size: 1.8em;
   font-weight: bold;
-  color: var(--color-principal);
+  color: #3C4F65;
 }
 
 /* BOTÓN DE MENÚ */
 button {
-  background-color: var(--color-principal);
+  background-color: #3C4F65;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -42,7 +33,7 @@ button {
 }
 
 button:hover {
-  background-color: var(--color-principal-dark);
+  background-color: #2E3A4A;
 }
 
 /* NAVEGACIÓN */
@@ -65,7 +56,7 @@ nav ul {
 }
 
 nav ul li a {
-  color: var(--color-principal);
+  color: #3C4F65;
   text-decoration: none;
   font-weight: bold;
   font-size: 1.1em;
@@ -102,7 +93,7 @@ nav ul li a:hover {
 }
 
 .hero-text h2 .highlight {
-  color: var(--color-principal);
+  color: #3C4F65;
   font-weight: bold;
 }
 
@@ -148,7 +139,7 @@ nav ul li a:hover {
   box-shadow: 0 0 20px #7e3dc2;
 }
 
-/* DISCORD IMAGES */
+/* POR SUPUESTO AJUSTADO */
 .discord-info.balanced-layout {
   background-color: #000;
   padding: 80px 40px;
@@ -156,7 +147,7 @@ nav ul li a:hover {
 
 .discord-heading.center {
   font-size: 3em;
-  color: var(--color-principal);
+  color: #3C4F65;
   text-align: center;
   margin-bottom: 60px;
 }
@@ -193,14 +184,14 @@ nav ul li a:hover {
   width: 100%;
   max-width: 400px;
   border-radius: 10px;
-  border: 3px solid var(--color-principal);
-  box-shadow: 0 0 20px var(--color-principal-shadow);
+  border: 3px solid #3C4F65;
+  box-shadow: 0 0 20px rgba(60, 79, 101, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .discord-img:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 30px var(--color-principal);
+  box-shadow: 0 0 30px rgba(60, 79, 101, 0.7);
 }
 
 /* RESPONSIVE */
@@ -227,13 +218,13 @@ nav ul li a:hover {
 /* CATÁLOGO GENERAL */
 .catalogo-titulo {
   font-size: 2.5em;
-  color: var(--color-principal);
+  color: #3C4F65;
   text-align: center;
   margin: 40px 0 20px;
 }
 
 header a button {
-  background-color: var(--color-principal);
+  background-color: #3C4F65;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -245,7 +236,7 @@ header a button {
 }
 
 header a button:hover {
-  background-color: var(--color-principal-dark);
+  background-color: #2E3A4A;
 }
 
 /* GRID DE CATÁLOGO */
@@ -260,29 +251,29 @@ header a button:hover {
 .anime-card {
   position: relative;
   background-color: #111;
-  border: 2px solid var(--color-principal);
+  border: 2px solid #3C4F65;
   border-radius: 10px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 0 15px var(--color-principal-shadow);
+  box-shadow: 0 0 15px rgba(60, 79, 101, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
 }
 
 .anime-card:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 25px var(--color-principal);
+  box-shadow: 0 0 25px rgba(60, 79, 101, 0.6);
 }
 
 .anime-card h3 {
-  color: var(--color-principal);
+  color: #3C4F65;
   margin: 15px 0;
   font-size: 1.33em;
   font-weight: bold;
 }
 
 .anime-card button {
-  background-color: var(--color-principal);
+  background-color: #3C4F65;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -292,7 +283,7 @@ header a button:hover {
 }
 
 .anime-card button:hover {
-  background-color: var(--color-principal-dark);
+  background-color: #2E3A4A;
 }
 
 /* ETIQUETAS INTEGRADAS */
